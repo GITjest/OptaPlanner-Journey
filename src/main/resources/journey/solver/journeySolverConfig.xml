@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<solver>
+    <solutionClass>journey.domain.JourneySolution</solutionClass>
+    <entityClass>journey.domain.JourneyStage</entityClass>
+
+    <scoreDirectorFactory>
+        <scoreDrl>journey/solver/journeyBalancingConstraints.drl</scoreDrl>
+    </scoreDirectorFactory>
+
+    <termination>
+        <secondsSpentLimit>300</secondsSpentLimit>
+    </termination>
+
+<!--    <exhaustiveSearch>-->
+<!--        <exhaustiveSearchType>BRANCH_AND_BOUND</exhaustiveSearchType>-->
+<!--    </exhaustiveSearch>-->
+
+<!--    <constructionHeuristic/>-->
+<!--    <localSearch>-->
+<!--        <acceptor>-->
+<!--            <acceptorType>HILL_CLIMBING</acceptorType>-->
+<!--        </acceptor>-->
+<!--        <forager>-->
+<!--            <acceptedCountLimit>1</acceptedCountLimit>-->
+<!--            <finalistPodiumType>STRATEGIC_OSCILLATION</finalistPodiumType>-->
+<!--        </forager>-->
+<!--    </localSearch>-->
+
+</solver>

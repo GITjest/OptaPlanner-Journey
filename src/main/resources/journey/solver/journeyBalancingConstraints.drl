@@ -1,0 +1,683 @@
+import org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScoreHolder;
+import journey.domain.JourneySolution;
+import journey.domain.Offer;
+import journey.domain.JourneyStage;
+global HardSoftScoreHolder scoreHolder;
+
+rule "(o.[0].i.[0] == 0) - HARD"
+when
+   $object1 : Offer(journeyStageId == 0, integers[0] == 0)
+   JourneyStage(id == 0, offer == $object1)
+then
+   scoreHolder.addHardConstraintMatch(kcontext, 1);
+end
+
+rule "(o.[12].i.[1] == 0) - HARD"
+when
+   $object1 : Offer(journeyStageId == 12, integers[1] == 0)
+   JourneyStage(id == 12, offer == $object1)
+then
+   scoreHolder.addHardConstraintMatch(kcontext, 1);
+end
+
+rule "(o.[12].i.[3] <= 20) - HARD"
+when
+   $object1 : Offer(journeyStageId == 12, integers[3] <= 20)
+   JourneyStage(id == 12, offer == $object1)
+then
+   scoreHolder.addHardConstraintMatch(kcontext, 1);
+end
+
+rule "(o.[0].i.[2] >= 0) - HARD"
+when
+   $object1 : Offer(journeyStageId == 0, integers[2] >= 0)
+   JourneyStage(id == 0, offer == $object1)
+then
+   scoreHolder.addHardConstraintMatch(kcontext, 1);
+end
+
+rule "(o.[0].i.[1] == o.[1].i.[3]) - HARD"
+when
+   $object1 : Offer(journeyStageId == 0, $value1 : integers[1])
+   $object2 : Offer(journeyStageId == 1, $value1 == integers[3])
+   JourneyStage(id == 0, offer == $object1)
+   JourneyStage(id == 1, offer == $object2)
+then
+   scoreHolder.addHardConstraintMatch(kcontext, 1);
+end
+
+rule "(o.[2].i.[1] == o.[3].i.[3]) - HARD"
+when
+   $object1 : Offer(journeyStageId == 2, $value1 : integers[1])
+   $object2 : Offer(journeyStageId == 3, $value1 == integers[3])
+   JourneyStage(id == 2, offer == $object1)
+   JourneyStage(id == 3, offer == $object2)
+then
+   scoreHolder.addHardConstraintMatch(kcontext, 1);
+end
+
+rule "(o.[4].i.[1] == o.[5].i.[3]) - HARD"
+when
+   $object1 : Offer(journeyStageId == 4, $value1 : integers[1])
+   $object2 : Offer(journeyStageId == 5, $value1 == integers[3])
+   JourneyStage(id == 4, offer == $object1)
+   JourneyStage(id == 5, offer == $object2)
+then
+   scoreHolder.addHardConstraintMatch(kcontext, 1);
+end
+
+rule "(o.[6].i.[1] == o.[7].i.[3]) - HARD"
+when
+   $object1 : Offer(journeyStageId == 6, $value1 : integers[1])
+   $object2 : Offer(journeyStageId == 7, $value1 == integers[3])
+   JourneyStage(id == 6, offer == $object1)
+   JourneyStage(id == 7, offer == $object2)
+then
+   scoreHolder.addHardConstraintMatch(kcontext, 1);
+end
+
+rule "(o.[8].i.[1] == o.[9].i.[3]) - HARD"
+when
+   $object1 : Offer(journeyStageId == 8, $value1 : integers[1])
+   $object2 : Offer(journeyStageId == 9, $value1 == integers[3])
+   JourneyStage(id == 8, offer == $object1)
+   JourneyStage(id == 9, offer == $object2)
+then
+   scoreHolder.addHardConstraintMatch(kcontext, 1);
+end
+
+rule "(o.[10].i.[1] == o.[11].i.[3]) - HARD"
+when
+   $object1 : Offer(journeyStageId == 10, $value1 : integers[1])
+   $object2 : Offer(journeyStageId == 11, $value1 == integers[3])
+   JourneyStage(id == 10, offer == $object1)
+   JourneyStage(id == 11, offer == $object2)
+then
+   scoreHolder.addHardConstraintMatch(kcontext, 1);
+end
+
+rule "(o.[2].i.[0] == o.[1].i.[3]) - HARD"
+when
+   $object1 : Offer(journeyStageId == 2, $value1 : integers[0])
+   $object2 : Offer(journeyStageId == 1, $value1 == integers[3])
+   JourneyStage(id == 2, offer == $object1)
+   JourneyStage(id == 1, offer == $object2)
+then
+   scoreHolder.addHardConstraintMatch(kcontext, 1);
+end
+
+rule "(o.[4].i.[0] == o.[3].i.[3]) - HARD"
+when
+   $object1 : Offer(journeyStageId == 4, $value1 : integers[0])
+   $object2 : Offer(journeyStageId == 3, $value1 == integers[3])
+   JourneyStage(id == 4, offer == $object1)
+   JourneyStage(id == 3, offer == $object2)
+then
+   scoreHolder.addHardConstraintMatch(kcontext, 1);
+end
+
+rule "(o.[6].i.[0] == o.[5].i.[3]) - HARD"
+when
+   $object1 : Offer(journeyStageId == 6, $value1 : integers[0])
+   $object2 : Offer(journeyStageId == 5, $value1 == integers[3])
+   JourneyStage(id == 6, offer == $object1)
+   JourneyStage(id == 5, offer == $object2)
+then
+   scoreHolder.addHardConstraintMatch(kcontext, 1);
+end
+
+rule "(o.[8].i.[0] == o.[7].i.[3]) - HARD"
+when
+   $object1 : Offer(journeyStageId == 8, $value1 : integers[0])
+   $object2 : Offer(journeyStageId == 7, $value1 == integers[3])
+   JourneyStage(id == 8, offer == $object1)
+   JourneyStage(id == 7, offer == $object2)
+then
+   scoreHolder.addHardConstraintMatch(kcontext, 1);
+end
+
+rule "(o.[10].i.[0] == o.[9].i.[3]) - HARD"
+when
+   $object1 : Offer(journeyStageId == 10, $value1 : integers[0])
+   $object2 : Offer(journeyStageId == 9, $value1 == integers[3])
+   JourneyStage(id == 10, offer == $object1)
+   JourneyStage(id == 9, offer == $object2)
+then
+   scoreHolder.addHardConstraintMatch(kcontext, 1);
+end
+
+rule "(o.[12].i.[0] == o.[11].i.[3]) - HARD"
+when
+   $object1 : Offer(journeyStageId == 12, $value1 : integers[0])
+   $object2 : Offer(journeyStageId == 11, $value1 == integers[3])
+   JourneyStage(id == 12, offer == $object1)
+   JourneyStage(id == 11, offer == $object2)
+then
+   scoreHolder.addHardConstraintMatch(kcontext, 1);
+end
+
+rule "(o.[1].i.[3] != o.[3].i.[3]) - HARD"
+when
+   $object1 : Offer(journeyStageId == 1, $value1 : integers[3])
+   $object2 : Offer(journeyStageId == 3, $value1 != integers[3])
+   JourneyStage(id == 1, offer == $object1)
+   JourneyStage(id == 3, offer == $object2)
+then
+   scoreHolder.addHardConstraintMatch(kcontext, 1);
+end
+
+rule "(o.[1].i.[3] != o.[5].i.[3]) - HARD"
+when
+   $object1 : Offer(journeyStageId == 1, $value1 : integers[3])
+   $object2 : Offer(journeyStageId == 5, $value1 != integers[3])
+   JourneyStage(id == 1, offer == $object1)
+   JourneyStage(id == 5, offer == $object2)
+then
+   scoreHolder.addHardConstraintMatch(kcontext, 1);
+end
+
+rule "(o.[1].i.[3] != o.[7].i.[3]) - HARD"
+when
+   $object1 : Offer(journeyStageId == 1, $value1 : integers[3])
+   $object2 : Offer(journeyStageId == 7, $value1 != integers[3])
+   JourneyStage(id == 1, offer == $object1)
+   JourneyStage(id == 7, offer == $object2)
+then
+   scoreHolder.addHardConstraintMatch(kcontext, 1);
+end
+
+rule "(o.[1].i.[3] != o.[9].i.[3]) - HARD"
+when
+   $object1 : Offer(journeyStageId == 1, $value1 : integers[3])
+   $object2 : Offer(journeyStageId == 9, $value1 != integers[3])
+   JourneyStage(id == 1, offer == $object1)
+   JourneyStage(id == 9, offer == $object2)
+then
+   scoreHolder.addHardConstraintMatch(kcontext, 1);
+end
+
+rule "(o.[1].i.[3] != o.[11].i.[3]) - HARD"
+when
+   $object1 : Offer(journeyStageId == 1, $value1 : integers[3])
+   $object2 : Offer(journeyStageId == 11, $value1 != integers[3])
+   JourneyStage(id == 1, offer == $object1)
+   JourneyStage(id == 11, offer == $object2)
+then
+   scoreHolder.addHardConstraintMatch(kcontext, 1);
+end
+
+rule "(o.[3].i.[3] != o.[5].i.[3]) - HARD"
+when
+   $object1 : Offer(journeyStageId == 3, $value1 : integers[3])
+   $object2 : Offer(journeyStageId == 5, $value1 != integers[3])
+   JourneyStage(id == 3, offer == $object1)
+   JourneyStage(id == 5, offer == $object2)
+then
+   scoreHolder.addHardConstraintMatch(kcontext, 1);
+end
+
+rule "(o.[3].i.[3] != o.[7].i.[3]) - HARD"
+when
+   $object1 : Offer(journeyStageId == 3, $value1 : integers[3])
+   $object2 : Offer(journeyStageId == 7, $value1 != integers[3])
+   JourneyStage(id == 3, offer == $object1)
+   JourneyStage(id == 7, offer == $object2)
+then
+   scoreHolder.addHardConstraintMatch(kcontext, 1);
+end
+
+rule "(o.[3].i.[3] != o.[9].i.[3]) - HARD"
+when
+   $object1 : Offer(journeyStageId == 3, $value1 : integers[3])
+   $object2 : Offer(journeyStageId == 9, $value1 != integers[3])
+   JourneyStage(id == 3, offer == $object1)
+   JourneyStage(id == 9, offer == $object2)
+then
+   scoreHolder.addHardConstraintMatch(kcontext, 1);
+end
+
+rule "(o.[3].i.[3] != o.[11].i.[3]) - HARD"
+when
+   $object1 : Offer(journeyStageId == 3, $value1 : integers[3])
+   $object2 : Offer(journeyStageId == 11, $value1 != integers[3])
+   JourneyStage(id == 3, offer == $object1)
+   JourneyStage(id == 11, offer == $object2)
+then
+   scoreHolder.addHardConstraintMatch(kcontext, 1);
+end
+
+rule "(o.[5].i.[3] != o.[7].i.[3]) - HARD"
+when
+   $object1 : Offer(journeyStageId == 5, $value1 : integers[3])
+   $object2 : Offer(journeyStageId == 7, $value1 != integers[3])
+   JourneyStage(id == 5, offer == $object1)
+   JourneyStage(id == 7, offer == $object2)
+then
+   scoreHolder.addHardConstraintMatch(kcontext, 1);
+end
+
+rule "(o.[5].i.[3] != o.[9].i.[3]) - HARD"
+when
+   $object1 : Offer(journeyStageId == 5, $value1 : integers[3])
+   $object2 : Offer(journeyStageId == 9, $value1 != integers[3])
+   JourneyStage(id == 5, offer == $object1)
+   JourneyStage(id == 9, offer == $object2)
+then
+   scoreHolder.addHardConstraintMatch(kcontext, 1);
+end
+
+rule "(o.[5].i.[3] != o.[11].i.[3]) - HARD"
+when
+   $object1 : Offer(journeyStageId == 5, $value1 : integers[3])
+   $object2 : Offer(journeyStageId == 11, $value1 != integers[3])
+   JourneyStage(id == 5, offer == $object1)
+   JourneyStage(id == 11, offer == $object2)
+then
+   scoreHolder.addHardConstraintMatch(kcontext, 1);
+end
+
+rule "(o.[7].i.[3] != o.[9].i.[3]) - HARD"
+when
+   $object1 : Offer(journeyStageId == 7, $value1 : integers[3])
+   $object2 : Offer(journeyStageId == 9, $value1 != integers[3])
+   JourneyStage(id == 7, offer == $object1)
+   JourneyStage(id == 9, offer == $object2)
+then
+   scoreHolder.addHardConstraintMatch(kcontext, 1);
+end
+
+rule "(o.[7].i.[3] != o.[11].i.[3]) - HARD"
+when
+   $object1 : Offer(journeyStageId == 7, $value1 : integers[3])
+   $object2 : Offer(journeyStageId == 11, $value1 != integers[3])
+   JourneyStage(id == 7, offer == $object1)
+   JourneyStage(id == 11, offer == $object2)
+then
+   scoreHolder.addHardConstraintMatch(kcontext, 1);
+end
+
+rule "(o.[9].i.[3] != o.[11].i.[3]) - HARD"
+when
+   $object1 : Offer(journeyStageId == 9, $value1 : integers[3])
+   $object2 : Offer(journeyStageId == 11, $value1 != integers[3])
+   JourneyStage(id == 9, offer == $object1)
+   JourneyStage(id == 11, offer == $object2)
+then
+   scoreHolder.addHardConstraintMatch(kcontext, 1);
+end
+
+rule "(o.[0].i.[3] <= o.[1].i.[1]) - HARD"
+when
+   $object1 : Offer(journeyStageId == 0, $value1 : integers[3])
+   $object2 : Offer(journeyStageId == 1, $value1 <= integers[1])
+   JourneyStage(id == 0, offer == $object1)
+   JourneyStage(id == 1, offer == $object2)
+then
+   scoreHolder.addHardConstraintMatch(kcontext, 1);
+end
+
+rule "(o.[2].i.[3] <= o.[3].i.[1]) - HARD"
+when
+   $object1 : Offer(journeyStageId == 2, $value1 : integers[3])
+   $object2 : Offer(journeyStageId == 3, $value1 <= integers[1])
+   JourneyStage(id == 2, offer == $object1)
+   JourneyStage(id == 3, offer == $object2)
+then
+   scoreHolder.addHardConstraintMatch(kcontext, 1);
+end
+
+rule "(o.[4].i.[3] <= o.[5].i.[1]) - HARD"
+when
+   $object1 : Offer(journeyStageId == 4, $value1 : integers[3])
+   $object2 : Offer(journeyStageId == 5, $value1 <= integers[1])
+   JourneyStage(id == 4, offer == $object1)
+   JourneyStage(id == 5, offer == $object2)
+then
+   scoreHolder.addHardConstraintMatch(kcontext, 1);
+end
+
+rule "(o.[6].i.[3] <= o.[7].i.[1]) - HARD"
+when
+   $object1 : Offer(journeyStageId == 6, $value1 : integers[3])
+   $object2 : Offer(journeyStageId == 7, $value1 <= integers[1])
+   JourneyStage(id == 6, offer == $object1)
+   JourneyStage(id == 7, offer == $object2)
+then
+   scoreHolder.addHardConstraintMatch(kcontext, 1);
+end
+
+rule "(o.[8].i.[3] <= o.[9].i.[1]) - HARD"
+when
+   $object1 : Offer(journeyStageId == 8, $value1 : integers[3])
+   $object2 : Offer(journeyStageId == 9, $value1 <= integers[1])
+   JourneyStage(id == 8, offer == $object1)
+   JourneyStage(id == 9, offer == $object2)
+then
+   scoreHolder.addHardConstraintMatch(kcontext, 1);
+end
+
+rule "(o.[10].i.[3] <= o.[11].i.[1]) - HARD"
+when
+   $object1 : Offer(journeyStageId == 10, $value1 : integers[3])
+   $object2 : Offer(journeyStageId == 11, $value1 <= integers[1])
+   JourneyStage(id == 10, offer == $object1)
+   JourneyStage(id == 11, offer == $object2)
+then
+   scoreHolder.addHardConstraintMatch(kcontext, 1);
+end
+
+rule "(o.[2].i.[2] >= o.[1].i.[2]) - HARD"
+when
+   $object1 : Offer(journeyStageId == 2, $value1 : integers[2])
+   $object2 : Offer(journeyStageId == 1, $value1 >= integers[2])
+   JourneyStage(id == 2, offer == $object1)
+   JourneyStage(id == 1, offer == $object2)
+then
+   scoreHolder.addHardConstraintMatch(kcontext, 1);
+end
+
+rule "(o.[4].i.[2] >= o.[3].i.[2]) - HARD"
+when
+   $object1 : Offer(journeyStageId == 4, $value1 : integers[2])
+   $object2 : Offer(journeyStageId == 3, $value1 >= integers[2])
+   JourneyStage(id == 4, offer == $object1)
+   JourneyStage(id == 3, offer == $object2)
+then
+   scoreHolder.addHardConstraintMatch(kcontext, 1);
+end
+
+rule "(o.[6].i.[2] >= o.[5].i.[2]) - HARD"
+when
+   $object1 : Offer(journeyStageId == 6, $value1 : integers[2])
+   $object2 : Offer(journeyStageId == 5, $value1 >= integers[2])
+   JourneyStage(id == 6, offer == $object1)
+   JourneyStage(id == 5, offer == $object2)
+then
+   scoreHolder.addHardConstraintMatch(kcontext, 1);
+end
+
+rule "(o.[8].i.[2] >= o.[7].i.[2]) - HARD"
+when
+   $object1 : Offer(journeyStageId == 8, $value1 : integers[2])
+   $object2 : Offer(journeyStageId == 7, $value1 >= integers[2])
+   JourneyStage(id == 8, offer == $object1)
+   JourneyStage(id == 7, offer == $object2)
+then
+   scoreHolder.addHardConstraintMatch(kcontext, 1);
+end
+
+rule "(o.[10].i.[2] >= o.[9].i.[2]) - HARD"
+when
+   $object1 : Offer(journeyStageId == 10, $value1 : integers[2])
+   $object2 : Offer(journeyStageId == 9, $value1 >= integers[2])
+   JourneyStage(id == 10, offer == $object1)
+   JourneyStage(id == 9, offer == $object2)
+then
+   scoreHolder.addHardConstraintMatch(kcontext, 1);
+end
+
+rule "(o.[12].i.[2] >= o.[11].i.[2]) - HARD"
+when
+   $object1 : Offer(journeyStageId == 12, $value1 : integers[2])
+   $object2 : Offer(journeyStageId == 11, $value1 >= integers[2])
+   JourneyStage(id == 12, offer == $object1)
+   JourneyStage(id == 11, offer == $object2)
+then
+   scoreHolder.addHardConstraintMatch(kcontext, 1);
+end
+
+rule "(o.[11].i.[2] - o.[11].i.[1]) - SOFT"
+when
+   $object1 : Offer(journeyStageId == 11, $value1 : integers[2], $value2 : integers[1])
+   JourneyStage(id == 11, offer == $object1)
+then
+   scoreHolder.addSoftConstraintMatch(kcontext, (int) (10.0 * ($value1 - $value2)));
+end
+
+rule "(o.[1].i.[2] - o.[1].i.[1]) - SOFT"
+when
+   $object1 : Offer(journeyStageId == 1, $value1 : integers[2], $value2 : integers[1])
+   JourneyStage(id == 1, offer == $object1)
+then
+   scoreHolder.addSoftConstraintMatch(kcontext, (int) (10.0 * ($value1 - $value2)));
+end
+
+rule "(o.[5].i.[2] - o.[5].i.[1]) - SOFT"
+when
+   $object1 : Offer(journeyStageId == 5, $value1 : integers[2], $value2 : integers[1])
+   JourneyStage(id == 5, offer == $object1)
+then
+   scoreHolder.addSoftConstraintMatch(kcontext, (int) (10.0 * ($value1 - $value2)));
+end
+
+rule "(o.[9].i.[2] - o.[9].i.[1]) - SOFT"
+when
+   $object1 : Offer(journeyStageId == 9, $value1 : integers[2], $value2 : integers[1])
+   JourneyStage(id == 9, offer == $object1)
+then
+   scoreHolder.addSoftConstraintMatch(kcontext, (int) (10.0 * ($value1 - $value2)));
+end
+
+rule "(o.[3].i.[2] - o.[3].i.[1]) - SOFT"
+when
+   $object1 : Offer(journeyStageId == 3, $value1 : integers[2], $value2 : integers[1])
+   JourneyStage(id == 3, offer == $object1)
+then
+   scoreHolder.addSoftConstraintMatch(kcontext, (int) (10.0 * ($value1 - $value2)));
+end
+
+rule "(o.[7].i.[2] - o.[7].i.[1]) - SOFT"
+when
+   $object1 : Offer(journeyStageId == 7, $value1 : integers[2], $value2 : integers[1])
+   JourneyStage(id == 7, offer == $object1)
+then
+   scoreHolder.addSoftConstraintMatch(kcontext, (int) (10.0 * ($value1 - $value2)));
+end
+
+rule "(o.[10].i.[3] - o.[10].i.[2]) - SOFT"
+when
+   $object1 : Offer(journeyStageId == 10, $value1 : integers[3], $value2 : integers[2])
+   JourneyStage(id == 10, offer == $object1)
+then
+   scoreHolder.addSoftConstraintMatch(kcontext, (int) (-10.0 * ($value1 - $value2)));
+end
+
+rule "(o.[12].i.[3] - o.[12].i.[2]) - SOFT"
+when
+   $object1 : Offer(journeyStageId == 12, $value1 : integers[3], $value2 : integers[2])
+   JourneyStage(id == 12, offer == $object1)
+then
+   scoreHolder.addSoftConstraintMatch(kcontext, (int) (-10.0 * ($value1 - $value2)));
+end
+
+rule "(o.[0].i.[3] - o.[0].i.[2]) - SOFT"
+when
+   $object1 : Offer(journeyStageId == 0, $value1 : integers[3], $value2 : integers[2])
+   JourneyStage(id == 0, offer == $object1)
+then
+   scoreHolder.addSoftConstraintMatch(kcontext, (int) (-10.0 * ($value1 - $value2)));
+end
+
+rule "(o.[2].i.[3] - o.[2].i.[2]) - SOFT"
+when
+   $object1 : Offer(journeyStageId == 2, $value1 : integers[3], $value2 : integers[2])
+   JourneyStage(id == 2, offer == $object1)
+then
+   scoreHolder.addSoftConstraintMatch(kcontext, (int) (-10.0 * ($value1 - $value2)));
+end
+
+rule "(o.[4].i.[3] - o.[4].i.[2]) - SOFT"
+when
+   $object1 : Offer(journeyStageId == 4, $value1 : integers[3], $value2 : integers[2])
+   JourneyStage(id == 4, offer == $object1)
+then
+   scoreHolder.addSoftConstraintMatch(kcontext, (int) (-10.0 * ($value1 - $value2)));
+end
+
+rule "(o.[6].i.[3] - o.[6].i.[2]) - SOFT"
+when
+   $object1 : Offer(journeyStageId == 6, $value1 : integers[3], $value2 : integers[2])
+   JourneyStage(id == 6, offer == $object1)
+then
+   scoreHolder.addSoftConstraintMatch(kcontext, (int) (-10.0 * ($value1 - $value2)));
+end
+
+rule "(o.[8].i.[3] - o.[8].i.[2]) - SOFT"
+when
+   $object1 : Offer(journeyStageId == 8, $value1 : integers[3], $value2 : integers[2])
+   JourneyStage(id == 8, offer == $object1)
+then
+   scoreHolder.addSoftConstraintMatch(kcontext, (int) (-10.0 * ($value1 - $value2)));
+end
+
+rule "o.[8].i.[4] - SOFT"
+when
+   $object1 : Offer(journeyStageId == 8, $value1 : integers[4])
+   JourneyStage(id == 8, offer == $object1)
+then
+   scoreHolder.addSoftConstraintMatch(kcontext, (int) (-0.01 * $value1));
+end
+
+rule "o.[9].i.[0] - SOFT"
+when
+   $object1 : Offer(journeyStageId == 9, $value1 : integers[0])
+   JourneyStage(id == 9, offer == $object1)
+then
+   scoreHolder.addSoftConstraintMatch(kcontext, (int) (-0.01 * $value1));
+end
+
+rule "o.[7].i.[0] - SOFT"
+when
+   $object1 : Offer(journeyStageId == 7, $value1 : integers[0])
+   JourneyStage(id == 7, offer == $object1)
+then
+   scoreHolder.addSoftConstraintMatch(kcontext, (int) (-0.01 * $value1));
+end
+
+rule "o.[3].i.[0] - SOFT"
+when
+   $object1 : Offer(journeyStageId == 3, $value1 : integers[0])
+   JourneyStage(id == 3, offer == $object1)
+then
+   scoreHolder.addSoftConstraintMatch(kcontext, (int) (-0.01 * $value1));
+end
+
+rule "o.[2].i.[4] - SOFT"
+when
+   $object1 : Offer(journeyStageId == 2, $value1 : integers[4])
+   JourneyStage(id == 2, offer == $object1)
+then
+   scoreHolder.addSoftConstraintMatch(kcontext, (int) (-0.01 * $value1));
+end
+
+rule "o.[0].i.[4] - SOFT"
+when
+   $object1 : Offer(journeyStageId == 0, $value1 : integers[4])
+   JourneyStage(id == 0, offer == $object1)
+then
+   scoreHolder.addSoftConstraintMatch(kcontext, (int) (-0.01 * $value1));
+end
+
+rule "o.[5].i.[0] - SOFT"
+when
+   $object1 : Offer(journeyStageId == 5, $value1 : integers[0])
+   JourneyStage(id == 5, offer == $object1)
+then
+   scoreHolder.addSoftConstraintMatch(kcontext, (int) (-0.01 * $value1));
+end
+
+rule "o.[1].i.[0] - SOFT"
+when
+   $object1 : Offer(journeyStageId == 1, $value1 : integers[0])
+   JourneyStage(id == 1, offer == $object1)
+then
+   scoreHolder.addSoftConstraintMatch(kcontext, (int) (-0.01 * $value1));
+end
+
+rule "o.[4].i.[4] - SOFT"
+when
+   $object1 : Offer(journeyStageId == 4, $value1 : integers[4])
+   JourneyStage(id == 4, offer == $object1)
+then
+   scoreHolder.addSoftConstraintMatch(kcontext, (int) (-0.01 * $value1));
+end
+
+rule "o.[11].i.[0] - SOFT"
+when
+   $object1 : Offer(journeyStageId == 11, $value1 : integers[0])
+   JourneyStage(id == 11, offer == $object1)
+then
+   scoreHolder.addSoftConstraintMatch(kcontext, (int) (-0.01 * $value1));
+end
+
+rule "o.[6].i.[4] - SOFT"
+when
+   $object1 : Offer(journeyStageId == 6, $value1 : integers[4])
+   JourneyStage(id == 6, offer == $object1)
+then
+   scoreHolder.addSoftConstraintMatch(kcontext, (int) (-0.01 * $value1));
+end
+
+rule "o.[12].i.[4] - SOFT"
+when
+   $object1 : Offer(journeyStageId == 12, $value1 : integers[4])
+   JourneyStage(id == 12, offer == $object1)
+then
+   scoreHolder.addSoftConstraintMatch(kcontext, (int) (-0.01 * $value1));
+end
+
+rule "o.[10].i.[4] - SOFT"
+when
+   $object1 : Offer(journeyStageId == 10, $value1 : integers[4])
+   JourneyStage(id == 10, offer == $object1)
+then
+   scoreHolder.addSoftConstraintMatch(kcontext, (int) (-0.01 * $value1));
+end
+
+rule "o.[11].r.[0] - SOFT"
+when
+   $object1 : Offer(journeyStageId == 11, $value1 : reals[0])
+   JourneyStage(id == 11, offer == $object1)
+then
+   scoreHolder.addSoftConstraintMatch(kcontext, (int) (1.0 * $value1));
+end
+
+rule "o.[5].r.[0] - SOFT"
+when
+   $object1 : Offer(journeyStageId == 5, $value1 : reals[0])
+   JourneyStage(id == 5, offer == $object1)
+then
+   scoreHolder.addSoftConstraintMatch(kcontext, (int) (1.0 * $value1));
+end
+
+rule "o.[3].r.[0] - SOFT"
+when
+   $object1 : Offer(journeyStageId == 3, $value1 : reals[0])
+   JourneyStage(id == 3, offer == $object1)
+then
+   scoreHolder.addSoftConstraintMatch(kcontext, (int) (1.0 * $value1));
+end
+
+rule "o.[1].r.[0] - SOFT"
+when
+   $object1 : Offer(journeyStageId == 1, $value1 : reals[0])
+   JourneyStage(id == 1, offer == $object1)
+then
+   scoreHolder.addSoftConstraintMatch(kcontext, (int) (1.0 * $value1));
+end
+
+rule "o.[9].r.[0] - SOFT"
+when
+   $object1 : Offer(journeyStageId == 9, $value1 : reals[0])
+   JourneyStage(id == 9, offer == $object1)
+then
+   scoreHolder.addSoftConstraintMatch(kcontext, (int) (1.0 * $value1));
+end
+
+rule "o.[7].r.[0] - SOFT"
+when
+   $object1 : Offer(journeyStageId == 7, $value1 : reals[0])
+   JourneyStage(id == 7, offer == $object1)
+then
+   scoreHolder.addSoftConstraintMatch(kcontext, (int) (1.0 * $value1));
+end

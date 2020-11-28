@@ -7,13 +7,27 @@
         <scoreDrl>journey/solver/journeyBalancingConstraints.drl</scoreDrl>
     </scoreDirectorFactory>
 
-    <termination>
-        <secondsSpentLimit>300</secondsSpentLimit>
-    </termination>
+    <terminationConfig>
+        <secondsSpentLimit>5</secondsSpentLimit>
+    </terminationConfig>
+
+<!--    <constructionHeuristic>-->
+<!--        <constructionHeuristicType>FIRST_FIT_DECREASING</constructionHeuristicType>-->
+<!--    </constructionHeuristic>-->
+
+<!--    <termination>-->
+<!--        <secondsSpentLimit>120</secondsSpentLimit>-->
+<!--        <bestScoreFeasible>true</bestScoreFeasible>-->
+<!--    </termination>-->
 
 <!--    <exhaustiveSearch>-->
 <!--        <exhaustiveSearchType>BRANCH_AND_BOUND</exhaustiveSearchType>-->
 <!--    </exhaustiveSearch>-->
+
+<!--    <exhaustiveSearch>-->
+<!--        <exhaustiveSearchType>BRUTE_FORCE</exhaustiveSearchType>-->
+<!--    </exhaustiveSearch>-->
+
 
 <!--    <constructionHeuristic/>-->
 <!--    <localSearch>-->
@@ -26,4 +40,19 @@
 <!--        </forager>-->
 <!--    </localSearch>-->
 
+<!--    <constructionHeuristic/>-->
+<!--    <localSearch>-->
+<!--        <acceptor>-->
+<!--            <entityTabuSize>7</entityTabuSize>-->
+<!--        </acceptor>-->
+<!--        <forager>-->
+<!--            <acceptedCountLimit>1000</acceptedCountLimit>-->
+<!--            <finalistPodiumType>STRATEGIC_OSCILLATION</finalistPodiumType>-->
+<!--        </forager>-->
+<!--    </localSearch>-->
+
+<!--    <constructionHeuristic/>-->
+<!--    <localSearch>-->
+<!--        <localSearchType>LATE_ACCEPTANCE</localSearchType>-->
+<!--    </localSearch>-->
 </solver>

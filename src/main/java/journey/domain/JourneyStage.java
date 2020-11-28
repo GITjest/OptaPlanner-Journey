@@ -7,7 +7,7 @@ import org.optaplanner.core.api.domain.variable.PlanningVariable;
 
 import java.util.List;
 
-@PlanningEntity
+@PlanningEntity(difficultyComparatorClass = JourneyStageDifficultyComparator.class)
 public class JourneyStage extends AbstractPersistable{
     private String name;
 

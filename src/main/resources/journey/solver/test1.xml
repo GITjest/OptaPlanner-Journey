@@ -1,0 +1,24 @@
+<org.optaplanner.core.config.solver.SolverConfig>
+  <scoreDirectorFactoryConfig>
+    <scoreDrlList class="singleton-list">
+      <string>journey/solver/journeyBalancingConstraints.drl</string>
+    </scoreDrlList>
+  </scoreDirectorFactoryConfig>
+  <terminationConfig>
+    <bestScoreFeasible>false</bestScoreFeasible>
+  </terminationConfig>
+  <phaseConfigList>
+    <org.optaplanner.core.config.constructionheuristic.ConstructionHeuristicPhaseConfig/>
+    <org.optaplanner.core.config.localsearch.LocalSearchPhaseConfig>
+      <acceptorConfig>
+        <acceptorTypeList>
+          <org.optaplanner.core.config.localsearch.decider.acceptor.AcceptorType>HILL_CLIMBING</org.optaplanner.core.config.localsearch.decider.acceptor.AcceptorType>
+        </acceptorTypeList>
+      </acceptorConfig>
+      <foragerConfig>
+        <acceptedCountLimit>1</acceptedCountLimit>
+        <finalistPodiumType>STRATEGIC_OSCILLATION</finalistPodiumType>
+      </foragerConfig>
+    </org.optaplanner.core.config.localsearch.LocalSearchPhaseConfig>
+  </phaseConfigList>
+</org.optaplanner.core.config.solver.SolverConfig>

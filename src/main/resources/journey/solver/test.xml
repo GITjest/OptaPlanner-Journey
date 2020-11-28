@@ -1,0 +1,5 @@
+<org.optaplanner.core.config.solver.SolverConfig>
+  <terminationConfig>
+    <minutesSpentLimit>1</minutesSpentLimit>
+  </terminationConfig>
+</org.optaplanner.core.config.solver.SolverConfig>

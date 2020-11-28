@@ -1,0 +1,269 @@
+.root {
+    -fx-background-color: #282828;
+}
+
+.button {
+    -fx-text-fill: white;
+    -fx-background-color: #282828;
+    -fx-padding: 0.5em 0em 0.5em 0em;
+    -fx-font-weight: bold;
+    -fx-border-color: #404040;
+    -fx-border-width: 1px;
+    -fx-min-width: 250px;
+    -fx-min-height: 30px;
+}
+
+.smallButton {
+    -fx-min-width: 120px;
+}
+
+.button:hover {
+    -fx-border-color: white;
+}
+
+.dangerButton:hover {
+    -fx-border-color: red;
+}
+
+.acceptButton:hover {
+    -fx-border-color: green;
+}
+
+.padding {
+    -fx-padding: 10px;
+}
+
+.label {
+    -fx-text-fill: white;
+    -fx-background-color: #282828;
+    -fx-padding: 0.5em 0em 0.5em 0em;
+    -fx-font-weight: bold;
+}
+
+.text-field {
+    -fx-background-color: #404040;
+    -fx-text-fill: white;
+    -fx-padding: 5px;
+    -fx-font-weight: bold;
+    -fx-border-color: transparent;
+    -fx-min-width: 250px;
+    -fx-max-height: 35px;
+}
+
+.text-field:hover {
+    -fx-background-color: #606060;
+    -fx-border-color: transparent;
+}
+
+.text-field:focused {
+    -fx-border-color: white;
+}
+
+.fileNameTextField {
+    -fx-min-height: 30px;
+}
+
+.spacing {
+    -fx-spacing: 10px;
+}
+
+.numberTextField {
+    -fx-min-width: 30px;
+}
+
+.check-box .box {
+    -fx-background-color: #404040;
+    -fx-border-color: #404040;
+    -fx-border-radius: 0px;
+}
+
+.check-box .box:hover {
+    -fx-border-color: white;
+}
+
+.check-box:selected .mark {
+    -fx-background-color: white;
+}
+
+.check-box:selected .box {
+    -fx-background-color: #404040;
+}
+
+.choice-box {
+    -fx-background-color: #404040;
+    -fx-mark-color: white;
+    -fx-focused-mark-color: white;
+    -fx-border-color: #404040;
+    -fx-pref-width: 50px;
+    -fx-padding: 0 0 0 10px;
+    -fx-alignment: center;
+}
+
+.choice-box:hover {
+    -fx-border-color: white;
+}
+
+.choice-box > .label {
+    -fx-text-fill: white;
+    -fx-background-color: #404040;
+}
+
+.choice-box .context-menu {
+    -fx-background-color: #404040;
+    -fx-border-width: 1px;
+    -fx-border-color: #404040;
+}
+
+.choice-box .menu-item:focused {
+    -fx-text-fill: white;
+    -fx-background-color: #282828;
+    -fx-padding: 0;
+}
+
+.choice-box .menu-item{
+    -fx-padding: 0;
+}
+
+.choice-box .menu-item > .label {
+    -fx-text-fill: white;
+    -fx-padding: 2;
+    -fx-background-color: #404040;
+}
+
+.choice-box .menu-item:focused > .label {
+    -fx-text-fill: white;
+    -fx-background-color: #282828;
+}
+
+.edit-configuration-panel{
+    -fx-padding: 10px;
+    -fx-border-color: white;
+    -fx-border-width: 0 0 0 1px;
+}
+
+.termination {
+    -fx-spacing: 10px;
+    -fx-border-color: white;
+    -fx-border-width: 1px 0 0 0;
+    -fx-max-width: 270px;
+    -fx-padding: 10px;
+}
+
+.text-area{
+    -fx-background-color: white;
+    -fx-control-inner-background: #282828;
+    -fx-border-width: 1px;
+    -fx-border-color: white;
+}
+
+.upper-line {
+    -fx-border-color: white;
+    -fx-border-width: 1px 0 0 0;
+    -fx-padding: 10px 0 10px 0;
+}
+
+.check-box {
+    -fx-text-fill: white;
+}
+
+.scroll-pane {
+    -fx-background-color:  #282828;
+}
+
+.scroll-bar:horizontal, .scroll-bar:vertical{
+    -fx-background-color: #282828;
+}
+.increment-button, .decrement-button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+.scroll-bar:horizontal .track,
+.scroll-bar:vertical .track{
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-background-radius: 0em;
+}
+.scroll-bar:horizontal .thumb,
+.scroll-bar:vertical .thumb {
+    -fx-background-color: #606060;
+    -fx-background-radius: 0em;
+}
+.scroll-bar:vertical .increment-button ,
+.scroll-bar:vertical .decrement-button {
+    -fx-background-color :transparent;
+    -fx-background-radius : 0.0em;
+    -fx-padding :0.0 10.0 0.0 0.0;
+}
+.scroll-bar .increment-arrow,
+.scroll-bar .decrement-arrow{
+    -fx-shape : " ";
+    -fx-padding :0.1em 0.0;
+}
+.scroll-pane:focused {
+    -fx-background-insets: 0;
+}
+.scroll-pane > .corner {
+    -fx-background-insets: 0;
+    -fx-background-color: #282828;
+}
+
+.table-view {
+    -fx-padding: 5px;
+    -fx-background-color: transparent;
+    -fx-max-height: 300px;
+    -fx-max-width: 515px;
+}
+
+.table-view .column-header-background .filler {
+    -fx-background-color: transparent;
+}
+
+.table-view .corner {
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header-background{
+    -fx-background-color: transparent;
+    -fx-background-radius: 7px 7px 0px 0px;
+    -fx-background-insets: 0 11px 0 0;
+    -fx-padding: 0 0 5px 0;
+}
+
+.table-view .column-header {
+    -fx-background-color: transparent;
+}
+
+.table-view .table-cell{
+    -fx-text-fill: white;
+    -fx-border-color: transparent;
+}
+.table-row-cell:hover {
+    -fx-background-color: white;
+    -fx-border-width: 1px 0 1px 0;
+    -fx-border-color: white;
+    -fx-text-background-color: white;
+}
+.table-row-cell:odd{
+    -fx-background-color: #404040;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em;
+}
+.table-row-cell:even{
+    -fx-background-color: #505050;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em;
+}
+
+.context-menu {
+    -fx-background-color: #282828;
+    -fx-text-fill: white;
+}
+
+.menu-item .label {
+    -fx-text-fill: white;
+    -fx-background-color: transparent;
+}
+
+.menu-item:focused .label {
+    -fx-text-fill: white;
+}

@@ -8,27 +8,28 @@ import pl.planics.concrete.constraints.ConcreteConstraint;
 import pl.planics.concrete.constraints.ConcreteExpr;
 import pl.planics.concrete.constraints.ReadConstraints;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
 
 public class GeneratorDRL {
-    private final String SCORE_HOLDER = "global HardSoftScoreHolder scoreHolder;";
+    private final String SCORE_HOLDER = "global HardSoftDoubleScoreHolder scoreHolder;";
     private final String[] IMPORTS =
-            {"import org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScoreHolder;",
+            {"import org.optaplanner.core.api.score.buildin.hardsoftdouble.HardSoftDoubleScoreHolder;",
                     "import journey.domain.JourneySolution;",
                     "import journey.domain.Offer;",
                     "import journey.domain.JourneyStage;"};
 
-    private String drlFileName;
+    private File drlFile;
     private ReadConstraints readConstraints;
     private Map<String, String> rules = new LinkedHashMap<>();
     private List<String> notAssignedRules = new ArrayList<>();
 
-    public GeneratorDRL(String propertiesFileName, String drlFileName) {
-        this.drlFileName = drlFileName;
+    public GeneratorDRL(File propertiesFile, File drlFile) {
+        this.drlFile = drlFile;
 
-        readConstraints = new ReadConstraints(propertiesFileName);
+        readConstraints = new ReadConstraints(propertiesFile.getAbsolutePath());
         for (ConcreteConstraint concreteConstraint : readConstraints.getConstraints()) {
             ConstraintDRL hardConstraintDRL = new HardConstraintDRL((Operator) concreteConstraint.getAstNode());
             rules.putAll(hardConstraintDRL.getRules());
@@ -43,7 +44,7 @@ public class GeneratorDRL {
 
     public void generate() {
         try {
-            FileWriter fileWriter = new FileWriter(drlFileName);
+            FileWriter fileWriter = new FileWriter(drlFile);
             for (String i : IMPORTS) {
                 fileWriter.write(i + "\n");
             }

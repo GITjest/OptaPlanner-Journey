@@ -6,7 +6,7 @@ import org.springframework.expression.spel.ast.SpelNodeImpl;
 import java.util.*;
 
 public class SoftConstraintDRL extends ConstraintDRL {
-    public static final String SOFT_CONSTRAINT_MATCH = "scoreHolder.addSoftConstraintMatch(kcontext, (int) (%s));";
+    public static final String SOFT_CONSTRAINT_MATCH = "scoreHolder.addSoftConstraintMatch(kcontext, (%s));";
     private double multi = 1;
 
     public SoftConstraintDRL(Operator operator) {

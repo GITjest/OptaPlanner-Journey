@@ -65,22 +65,6 @@ public class JourneyGenerator extends LoggingMain {
     public JourneySolution createJourneySolutionFromFile(String dataFile) {
         List<IOfferSet> offers = loadOffersFromFile(dataFile);
 
-//        for(IOfferSet offerSet : offers) {
-//            for(IOffer offer : offerSet.getOffers()) {
-//                if((offer.getId() == 69 && offer.getServiceId() == 1)
-//                        || (offer.getId() == 241 && offer.getServiceId() == 2)
-//                        || (offer.getId() == 249 && offer.getServiceId() == 3)
-//                        || (offer.getId() == 227 && offer.getServiceId() == 4)
-//                        || (offer.getId() == 254 && offer.getServiceId() == 5)
-//                        || (offer.getId() == 245 && offer.getServiceId() == 6)
-//                        || (offer.getId() == 253 && offer.getServiceId() == 7)
-//                        || (offer.getId() == 36 && offer.getServiceId() == 8)
-//                        || (offer.getId() == 79 && offer.getServiceId() == 0)) {
-//                    System.out.println(offer.toString());
-//                }
-//            }
-//        }
-
         List<Offer> offerList = new ArrayList<>();
         List<JourneyStage> journeyStages = new ArrayList<>();
         int id = 0;
@@ -104,5 +88,16 @@ public class JourneyGenerator extends LoggingMain {
             Logger.getLogger(JourneyGenerator.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
+    }
+
+    private Boolean getOfferFromResult(String result, IOffer offer) {
+        String[] results = result.split(" ");
+        for(String s : results) {
+            String[] s1 = s.split(":");
+            if(offer.getServiceId() == Integer.parseInt(s1[0]) && offer.getId() == Integer.parseInt(s1[1])) {
+                return true;
+            }
+        }
+        return false;
     }
 }

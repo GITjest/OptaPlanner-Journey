@@ -2,7 +2,7 @@ package journey.domain;
 
 import java.util.Arrays;
 
-public class Offer extends AbstractPersistable{
+public class Offer extends AbstractPersistable {
     private int journeyStageId;
     private long[] integers;
     private double[] reals;

@@ -71,4 +71,8 @@ public class GeneratorDRL {
     public String getDataFile() {
         return readConstraints.getDataFile();
     }
+
+    public File getDrlFile() {
+        return drlFile;
+    }
 }

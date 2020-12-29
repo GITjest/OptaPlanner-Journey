@@ -9,9 +9,6 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import journey.constraints.generatorDRL.GeneratorDRL;
 import journey.guifx.Layout;
-import org.optaplanner.core.config.constructionheuristic.ConstructionHeuristicPhaseConfig;
-import org.optaplanner.core.config.localsearch.LocalSearchPhaseConfig;
-import org.optaplanner.core.config.solver.SolverConfig;
 
 import java.io.File;
 
@@ -20,6 +17,7 @@ public class ConfigurationPanel extends VBox {
     private static TextField propertyTextField = new TextField();
     private static TextField configurationTextField = new TextField();
     private Stage primaryStage;
+    private static File drlFile;
 
     public ConfigurationPanel(Stage primaryStage) {
         this.primaryStage = primaryStage;
@@ -28,7 +26,7 @@ public class ConfigurationPanel extends VBox {
 
     private void init() {
         Label dataLabel = new Label("Dane");
-        dataTextField.getStyleClass().add("fileNameTextField");
+        dataTextField.getStyleClass().add("file-name-next-field");
         dataTextField.textProperty().addListener((observable, oldValue, newValue) -> disableStartButtons());
         FileChooser dataFileChooser = new FileChooser();
         dataFileChooser.getExtensionFilters().addAll(
@@ -49,7 +47,7 @@ public class ConfigurationPanel extends VBox {
         dataHBox.getChildren().addAll(dataTextField, dataFileChooserButton);
 
         Label propertyLabel = new Label("Ograniczenia");
-        propertyTextField.getStyleClass().add("fileNameTextField");
+        propertyTextField.getStyleClass().add("file-name-next-field");
         propertyTextField.textProperty().addListener((observable, oldValue, newValue) -> disableStartButtons());
         FileChooser propertyFileChooser = new FileChooser();
         propertyFileChooser.getExtensionFilters().addAll(
@@ -64,7 +62,7 @@ public class ConfigurationPanel extends VBox {
                 propertyTextField.setText(file.getPath());
                 GeneratorDRL drl = new GeneratorDRL(file, new File(file.getAbsolutePath().substring(0, file.getAbsolutePath().lastIndexOf(".")) + ".drl"));
                 drl.generate();
-
+                drlFile = drl.getDrlFile();
                 File data = new File(file.getParentFile() + "/" + drl.getDataFile());
                 if(data.exists() && dataTextField.getText().equals("")) {
                     dataTextField.setText(data.getPath());
@@ -77,7 +75,7 @@ public class ConfigurationPanel extends VBox {
         propertyHBox.getChildren().addAll(propertyTextField, propertyFileChooserButton);
 
         Label configurationLabel = new Label("Plik konfiguracyjny");
-        configurationTextField.getStyleClass().add("fileNameTextField");
+        configurationTextField.getStyleClass().add("file-name-next-field");
         configurationTextField.textProperty().addListener((observable, oldValue, newValue) -> disableStartButtons());
         FileChooser configurationFileChooser = new FileChooser();
         configurationFileChooser.getExtensionFilters().addAll(
@@ -86,19 +84,19 @@ public class ConfigurationPanel extends VBox {
         );
 
         Button configurationFileChooserButton = new Button("Wybierz plik");
-        configurationFileChooserButton.getStyleClass().add("smallButton");
+        configurationFileChooserButton.getStyleClass().add("small-button");
         configurationFileChooserButton.setOnAction(e -> {
             File file = configurationFileChooser.showOpenDialog(primaryStage);
             if (file != null) {
                 configurationTextField.setText(file.getPath());
-                Layout.getLayout().setCenter(new EditConfigurationPanel(file.getPath(), primaryStage));
+                new EditConfigurationPanel(file.getPath());
             }
         });
         Button createButton = new Button("Stwórz plik");
         createButton.setOnAction(event -> {
-            Layout.getLayout().setCenter(new EditConfigurationPanel(EditConfigurationPanel.getSolverConfig(), primaryStage));
+            new EditConfigurationPanel(EditConfigurationPanel.getSolverConfig());
         });
-        createButton.getStyleClass().add("smallButton");
+        createButton.getStyleClass().add("small-button");
         HBox configurationHBox = new HBox();
         configurationHBox.getStyleClass().add("spacing");
         configurationHBox.getChildren().addAll(configurationTextField, configurationFileChooserButton, createButton);
@@ -125,19 +123,7 @@ public class ConfigurationPanel extends VBox {
         return configurationTextField;
     }
 
-
-
-
-
-
-    private void create() {
-        SolverConfig solverConfig = SolverConfig.createFromXmlFile(new File("C:/Users/damia/Desktop/Magisterka/Journey/src/main/resources/journey/solver/journeySolverConfig.xml"));
-
-        System.out.println(solverConfig.getPhaseConfigList());
-        ConstructionHeuristicPhaseConfig c = (ConstructionHeuristicPhaseConfig) solverConfig.getPhaseConfigList().get(0);
-        LocalSearchPhaseConfig c1 = (LocalSearchPhaseConfig) solverConfig.getPhaseConfigList().get(1);
-        System.out.println(c1.getForagerConfig().getAcceptedCountLimit());
+    public static File getDrlFile() {
+        return drlFile;
     }
-
-
 }

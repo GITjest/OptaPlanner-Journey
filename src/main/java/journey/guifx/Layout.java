@@ -43,17 +43,17 @@ public class Layout {
         borderPane = new BorderPane();
         startOptaPlannerButton = new Button("Start");
         startOptaPlannerButton.setDisable(true);
-        startOptaPlannerButton.getStyleClass().add("acceptButton");
+        startOptaPlannerButton.getStyleClass().add("accept-button");
         startOptaPlannerButton.setOnAction(event -> startSolver());
 
         startBenchmarkButton = new Button("Start Benchmark");
         startBenchmarkButton.setDisable(true);
-        startBenchmarkButton.getStyleClass().add("acceptButton");
+        startBenchmarkButton.getStyleClass().add("accept-button");
         startBenchmarkButton.setOnAction(event -> startBenchmark());
 
         startPlanICSButton = new Button("Start");
         startPlanICSButton.setDisable(true);
-        startPlanICSButton.getStyleClass().add("acceptButton");
+        startPlanICSButton.getStyleClass().add("accept-button");
         startPlanICSButton.setOnAction(event -> startPlanICS());
 
         TextArea textArea = new TextArea();
@@ -74,7 +74,7 @@ public class Layout {
 
         choiceBox = new ChoiceBox<>(FXCollections.observableArrayList(Arrays.asList("HSA", "GA")));
         choiceBox.setValue("HSA");
-        choiceBox.getStyleClass().add("smallButton");
+        choiceBox.getStyleClass().add("small-button");
         solverPlanICSHBox.getChildren().addAll(startPlanICSButton, choiceBox, checkBox);
         solverPlanICS.getChildren().addAll(new Label("PlanICS"), solverPlanICSHBox);
 
@@ -98,11 +98,9 @@ public class Layout {
         table.getColumns().addAll(nameCol, localizationCol, endLocalizationCol, startDateCol, endDateCol, priceCol, comfortCol);
 
         final VBox vBox = new VBox();
-        vBox.getStyleClass().addAll("padding");
-        ConfigurationPanel configurationPanel = new ConfigurationPanel(primaryStage);
-        vBox.getChildren().addAll(configurationPanel, solverOptaPlanner, solverPlanICS, textArea, table);
-
-        borderPane.setLeft(vBox);
+        vBox.getStyleClass().add("padding");
+        vBox.getChildren().addAll(new ConfigurationPanel(primaryStage), solverOptaPlanner, solverPlanICS, textArea, table);
+        borderPane.setCenter(vBox);
     }
 
     public static BorderPane getLayout() {
@@ -123,12 +121,17 @@ public class Layout {
 
     public void startSolver() {
         Thread thread = new Thread(() -> {
-            SolverFactory<JourneySolution> solverFactory = SolverFactory.create(EditConfigurationPanel.getSolverConfig());
-            Solver<JourneySolution> solver = solverFactory.buildSolver();
-            JourneySolution unsolvedJourneySolution = new JourneyGenerator().createJourneySolutionFromFile(ConfigurationPanel.getDataTextField().getText());
-            JourneySolution solvedJourneySolution = solver.solve(unsolvedJourneySolution);
-            System.out.println(toDisplayString(solvedJourneySolution));
-            addData(solvedJourneySolution);
+            try {
+                SolverFactory<JourneySolution> solverFactory = SolverFactory.create(EditConfigurationPanel.getSolverConfig());
+                Solver<JourneySolution> solver = solverFactory.buildSolver();
+                JourneySolution unsolvedJourneySolution = new JourneyGenerator().createJourneySolutionFromFile(ConfigurationPanel.getDataTextField().getText());
+                JourneySolution solvedJourneySolution = solver.solve(unsolvedJourneySolution);
+                System.out.println(toDisplayString(solvedJourneySolution));
+                addData(solvedJourneySolution);
+            } catch (Exception e) {
+                LOG.error(e.getMessage());
+            }
+
             Platform.runLater(() -> {
                 startOptaPlannerButton.setText("Start");
                 startOptaPlannerButton.setOnAction(event1 -> startSolver());
@@ -165,9 +168,14 @@ public class Layout {
 
     public void startBenchmark() {
         Thread thread = new Thread(() -> {
-            PlannerBenchmarkFactory benchmarkFactory = PlannerBenchmarkFactory.createFromSolverFactory(SolverFactory.create(EditConfigurationPanel.getSolverConfig()));
-            PlannerBenchmark benchmark = benchmarkFactory.buildPlannerBenchmark(new JourneyGenerator().createJourneySolutionFromFile(ConfigurationPanel.getDataTextField().getText()));
-            benchmark.benchmarkAndShowReportInBrowser();
+            try{
+                PlannerBenchmarkFactory benchmarkFactory = PlannerBenchmarkFactory.createFromSolverFactory(SolverFactory.create(EditConfigurationPanel.getSolverConfig()));
+                PlannerBenchmark benchmark = benchmarkFactory.buildPlannerBenchmark(new JourneyGenerator().createJourneySolutionFromFile(ConfigurationPanel.getDataTextField().getText()));
+                benchmark.benchmarkAndShowReportInBrowser();
+            } catch (Exception e) {
+                LOG.error(e.getMessage());
+            }
+
             Platform.runLater(() -> {
                 startBenchmarkButton.setText("Start Benchmark");
                 startBenchmarkButton.setOnAction(event1 -> startBenchmark());
@@ -189,9 +197,13 @@ public class Layout {
 
     public void startPlanICS() {
         Thread thread = new Thread(() -> {
-            switch (choiceBox.getSelectionModel().getSelectedItem()) {
-                case "HSA": new HSA(checkBox.isSelected()).start(); break;
-                case "GA": new GA(checkBox.isSelected()).start(); break;
+            try {
+                switch (choiceBox.getSelectionModel().getSelectedItem()) {
+                    case "HSA": new HSA(checkBox.isSelected()).start(); break;
+                    case "GA": new GA(checkBox.isSelected()).start(); break;
+                }
+            } catch (Exception e) {
+                LOG.error(e.getMessage());
             }
 
             Platform.runLater(() -> {

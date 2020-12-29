@@ -41,6 +41,9 @@ public class App{
 //        System.out.println(threadMXBean.getCurrentThreadCpuTime() + " - " + threadMXBean.getCurrentThreadCpuTime()/1000000000);
 //
 //        System.out.println(toDisplayString(solvedJourneySolution));
+
+
+
     }
 
 

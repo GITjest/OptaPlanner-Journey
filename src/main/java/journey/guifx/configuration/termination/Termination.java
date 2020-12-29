@@ -1,4 +1,4 @@
-package journey.guifx.configuration;
+package journey.guifx.configuration.termination;
 
 import javafx.collections.FXCollections;
 import javafx.scene.control.*;
@@ -7,14 +7,12 @@ import org.optaplanner.core.config.solver.termination.TerminationCompositionStyl
 import org.optaplanner.core.config.solver.termination.TerminationConfig;
 
 public class Termination extends GridPane {
-    public TerminationConfig terminationConfig;
+    private TerminationConfig terminationConfig;
 
     public Termination(TerminationConfig terminationConfig) {
         if(terminationConfig == null) this.terminationConfig = new TerminationConfig();
         else this.terminationConfig = terminationConfig;
         getStyleClass().add("termination");
-        setVgap(5);
-        setHgap(10);
         add(new Label("MillisecondsSpentLimit"), 0, 0);
         add(millisecondsSpentLimit(), 1, 0);
         add(new Label("SecondsSpentLimit"), 0, 1);
@@ -51,8 +49,6 @@ public class Termination extends GridPane {
 
     private TextField millisecondsSpentLimit() {
         TextField textField = new TextField();
-        textField.getStyleClass().add("numberTextField");
-        textField.setMaxWidth(50);
         if(terminationConfig.getMillisecondsSpentLimit() != null)
         textField.setText(String.valueOf(terminationConfig.getMillisecondsSpentLimit()));
         textField.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -67,8 +63,6 @@ public class Termination extends GridPane {
 
     private TextField secondsSpentLimit() {
         TextField textField = new TextField();
-        textField.getStyleClass().add("numberTextField");
-        textField.setMaxWidth(50);
         if(terminationConfig.getSecondsSpentLimit() != null)
         textField.setText(String.valueOf(terminationConfig.getSecondsSpentLimit()));
         textField.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -83,8 +77,6 @@ public class Termination extends GridPane {
 
     private TextField minutesSpentLimit() {
         TextField textField = new TextField();
-        textField.getStyleClass().add("numberTextField");
-        textField.setMaxWidth(50);
         if(terminationConfig.getMinutesSpentLimit() != null)
             textField.setText(String.valueOf(terminationConfig.getMinutesSpentLimit()));
         textField.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -99,8 +91,6 @@ public class Termination extends GridPane {
 
     private TextField hoursSpentLimit() {
         TextField textField = new TextField();
-        textField.getStyleClass().add("numberTextField");
-        textField.setMaxWidth(50);
         if(terminationConfig.getHoursSpentLimit() != null)
             textField.setText(String.valueOf(terminationConfig.getHoursSpentLimit()));
         textField.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -115,8 +105,6 @@ public class Termination extends GridPane {
 
     private TextField daysSpentLimit() {
         TextField textField = new TextField();
-        textField.getStyleClass().add("numberTextField");
-        textField.setMaxWidth(50);
         if(terminationConfig.getDaysSpentLimit() != null)
             textField.setText(String.valueOf(terminationConfig.getDaysSpentLimit()));
         textField.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -131,8 +119,6 @@ public class Termination extends GridPane {
 
     private TextField unimprovedMillisecondsSpentLimit() {
         TextField textField = new TextField();
-        textField.getStyleClass().add("numberTextField");
-        textField.setMaxWidth(50);
         if(terminationConfig.getUnimprovedMillisecondsSpentLimit() != null)
             textField.setText(String.valueOf(terminationConfig.getUnimprovedMillisecondsSpentLimit()));
         textField.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -147,8 +133,6 @@ public class Termination extends GridPane {
 
     private TextField unimprovedSecondsSpentLimit() {
         TextField textField = new TextField();
-        textField.getStyleClass().add("numberTextField");
-        textField.setMaxWidth(50);
         if(terminationConfig.getUnimprovedSecondsSpentLimit() != null)
             textField.setText(String.valueOf(terminationConfig.getUnimprovedSecondsSpentLimit()));
         textField.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -163,8 +147,6 @@ public class Termination extends GridPane {
 
     private TextField unimprovedMinutesSpentLimit() {
         TextField textField = new TextField();
-        textField.getStyleClass().add("numberTextField");
-        textField.setMaxWidth(50);
         if(terminationConfig.getUnimprovedMinutesSpentLimit() != null)
             textField.setText(String.valueOf(terminationConfig.getUnimprovedMinutesSpentLimit()));
         textField.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -179,8 +161,6 @@ public class Termination extends GridPane {
 
     private TextField unimprovedHoursSpentLimit() {
         TextField textField = new TextField();
-        textField.getStyleClass().add("numberTextField");
-        textField.setMaxWidth(50);
         if(terminationConfig.getUnimprovedHoursSpentLimit() != null)
             textField.setText(String.valueOf(terminationConfig.getUnimprovedHoursSpentLimit()));
         textField.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -195,8 +175,6 @@ public class Termination extends GridPane {
 
     private TextField unimprovedDaysSpentLimit() {
         TextField textField = new TextField();
-        textField.getStyleClass().add("numberTextField");
-        textField.setMaxWidth(50);
         if(terminationConfig.getUnimprovedDaysSpentLimit() != null)
             textField.setText(String.valueOf(terminationConfig.getUnimprovedDaysSpentLimit()));
         textField.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -211,8 +189,6 @@ public class Termination extends GridPane {
 
     private TextField bestScoreLimit() {
         TextField textField = new TextField();
-        textField.getStyleClass().add("numberTextField");
-        textField.setMaxWidth(50);
         if(terminationConfig.getBestScoreLimit() != null)
             textField.setText(terminationConfig.getBestScoreLimit());
         textField.setTooltip(new Tooltip("0hard/-5000soft"));
@@ -231,8 +207,6 @@ public class Termination extends GridPane {
 
     private TextField stepCountLimit() {
         TextField textField = new TextField();
-        textField.getStyleClass().add("numberTextField");
-        textField.setMaxWidth(50);
         if(terminationConfig.getStepCountLimit() != null)
             textField.setText(String.valueOf(terminationConfig.getStepCountLimit()));
         textField.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -247,8 +221,6 @@ public class Termination extends GridPane {
 
     private TextField unimprovedStepCountLimit() {
         TextField textField = new TextField();
-        textField.getStyleClass().add("numberTextField");
-        textField.setMaxWidth(50);
         if(terminationConfig.getUnimprovedStepCountLimit() != null)
             textField.setText(String.valueOf(terminationConfig.getUnimprovedStepCountLimit()));
         textField.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -263,8 +235,6 @@ public class Termination extends GridPane {
 
     private TextField scoreCalculationCountLimit() {
         TextField textField = new TextField();
-        textField.getStyleClass().add("numberTextField");
-        textField.setMaxWidth(50);
         if(terminationConfig.getCalculateCountLimit() != null)
             textField.setText(String.valueOf(terminationConfig.getCalculateCountLimit()));
         textField.textProperty().addListener((observable, oldValue, newValue) -> {

@@ -8,21 +8,27 @@
     </scoreDirectorFactory>
 
     <terminationConfig>
-        <secondsSpentLimit>5</secondsSpentLimit>
+        <secondsSpentLimit>50</secondsSpentLimit>
     </terminationConfig>
+
+
+
 
 <!--    <constructionHeuristic>-->
 <!--        <constructionHeuristicType>FIRST_FIT_DECREASING</constructionHeuristicType>-->
 <!--    </constructionHeuristic>-->
+
+<!--    <exhaustiveSearch>-->
+<!--        <exhaustiveSearchType>BRANCH_AND_BOUND</exhaustiveSearchType>-->
+<!--    </exhaustiveSearch>-->
+
 
 <!--    <termination>-->
 <!--        <secondsSpentLimit>120</secondsSpentLimit>-->
 <!--        <bestScoreFeasible>true</bestScoreFeasible>-->
 <!--    </termination>-->
 
-<!--    <exhaustiveSearch>-->
-<!--        <exhaustiveSearchType>BRANCH_AND_BOUND</exhaustiveSearchType>-->
-<!--    </exhaustiveSearch>-->
+
 
 <!--    <exhaustiveSearch>-->
 <!--        <exhaustiveSearchType>BRUTE_FORCE</exhaustiveSearchType>-->
@@ -30,15 +36,15 @@
 
 
 <!--    <constructionHeuristic/>-->
-<!--    <localSearch>-->
-<!--        <acceptor>-->
-<!--            <acceptorType>HILL_CLIMBING</acceptorType>-->
-<!--        </acceptor>-->
-<!--        <forager>-->
-<!--            <acceptedCountLimit>1</acceptedCountLimit>-->
-<!--            <finalistPodiumType>STRATEGIC_OSCILLATION</finalistPodiumType>-->
-<!--        </forager>-->
-<!--    </localSearch>-->
+    <localSearch>
+        <acceptor>
+            <acceptorType>HILL_CLIMBING</acceptorType>
+        </acceptor>
+        <forager>
+            <acceptedCountLimit>1</acceptedCountLimit>
+            <finalistPodiumType>STRATEGIC_OSCILLATION</finalistPodiumType>
+        </forager>
+    </localSearch>
 
 <!--    <constructionHeuristic/>-->
 <!--    <localSearch>-->

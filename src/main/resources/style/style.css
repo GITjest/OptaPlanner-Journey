@@ -9,24 +9,28 @@
     -fx-font-weight: bold;
     -fx-border-color: #404040;
     -fx-border-width: 1px;
-    -fx-min-width: 250px;
+    -fx-min-width: 280px;
     -fx-min-height: 30px;
 }
 
-.smallButton {
-    -fx-min-width: 120px;
+.small-button {
+    -fx-min-width: 135px;
 }
 
 .button:hover {
     -fx-border-color: white;
 }
 
-.dangerButton:hover {
+.danger-button:hover {
     -fx-border-color: red;
 }
 
-.acceptButton:hover {
+.accept-button:hover {
     -fx-border-color: green;
+}
+
+.configuration-buttons {
+    -fx-alignment: center;
 }
 
 .padding {
@@ -46,7 +50,7 @@
     -fx-padding: 5px;
     -fx-font-weight: bold;
     -fx-border-color: transparent;
-    -fx-min-width: 250px;
+    -fx-min-width: 280px;
     -fx-max-height: 35px;
 }
 
@@ -59,16 +63,12 @@
     -fx-border-color: white;
 }
 
-.fileNameTextField {
+.file-name-text-field {
     -fx-min-height: 30px;
 }
 
 .spacing {
     -fx-spacing: 10px;
-}
-
-.numberTextField {
-    -fx-min-width: 30px;
 }
 
 .check-box .box {
@@ -137,19 +137,58 @@
 
 .edit-configuration-panel{
     -fx-padding: 10px;
-    -fx-border-color: white;
-    -fx-border-width: 0 0 0 1px;
 }
 
-.termination {
+.termination,
+.algorithm {
     -fx-spacing: 10px;
     -fx-border-color: white;
     -fx-border-width: 1px 0 0 0;
-    -fx-max-width: 270px;
+    -fx-max-width: 300px;
     -fx-padding: 10px;
+    -fx-hgap: 10px;
+    -fx-vgap: 5px;
 }
 
-.text-area{
+.termination .text-field{
+    -fx-max-width: 50px;
+    -fx-min-width: 50px;
+}
+
+.algorithm {
+    -fx-max-width: 800px;
+}
+
+.algorithm .choice-box {
+    -fx-pref-width: 150px;
+}
+
+.algorithm .text-field {
+    -fx-max-width: 150px;
+    -fx-min-width: 150px;
+}
+
+.algorithm .small-text-field {
+    -fx-max-width: 70px;
+    -fx-min-width: 70px;
+}
+
+.exhaustive-search,
+.construction-heuristic,
+.local-search {
+    -fx-hgap: 10px;
+    -fx-vgap: 5px;
+}
+
+.exhaustive-search,
+.construction-heuristic{
+    -fx-border-color: white;
+    -fx-border-width: 0 0 1px 0;
+    -fx-padding: 0 0 10px 0;
+    -fx-hgap: 15px;
+}
+
+.text-area {
     -fx-background-color: white;
     -fx-control-inner-background: #282828;
     -fx-border-width: 1px;
@@ -211,7 +250,7 @@
     -fx-padding: 5px;
     -fx-background-color: transparent;
     -fx-max-height: 300px;
-    -fx-max-width: 515px;
+    -fx-max-width: 575px;
 }
 
 .table-view .column-header-background .filler {

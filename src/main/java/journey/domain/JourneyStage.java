@@ -11,8 +11,10 @@ import java.util.List;
 public class JourneyStage extends AbstractPersistable{
     private String name;
 
-    @PlanningVariable(valueRangeProviderRefs = {"offer"})
+    @PlanningVariable(valueRangeProviderRefs = {"offer"}, strengthComparatorClass = OfferStrengthComparator.class)
     private Offer offer;
+
+    //gettery...
 
     public JourneyStage() {
     }

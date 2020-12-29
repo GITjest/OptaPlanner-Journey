@@ -1,5 +1,16 @@
 <org.optaplanner.core.config.solver.SolverConfig>
   <terminationConfig>
-    <minutesSpentLimit>1</minutesSpentLimit>
+    <secondsSpentLimit>50</secondsSpentLimit>
   </terminationConfig>
+  <org.optaplanner.core.config.constructionheuristic.ConstructionHeuristicPhaseConfig/>
+  <org.optaplanner.core.config.localsearch.LocalSearchPhaseConfig>
+    <acceptorConfig>
+      <acceptorType>HILL_CLIMBING</acceptorType>
+    </acceptorConfig>
+    <foragerConfig>
+      <acceptedCountLimit>1</acceptedCountLimit>
+      <finalistPodiumType>STRATEGIC_OSCILLATION</finalistPodiumType>
+    </foragerConfig>
+  </org.optaplanner.core.config.localsearch.LocalSearchPhaseConfig>
+  <org.optaplanner.core.config.exhaustivesearch.ExhaustiveSearchPhaseConfig/>
 </org.optaplanner.core.config.solver.SolverConfig>

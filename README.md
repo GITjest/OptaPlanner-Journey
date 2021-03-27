@@ -1,4 +1,4 @@
-# OptaPlanner-Journey
+# OptaPlanICS Journey
 > The application was created as part of the thesis entitled "Comparison of the efficiency of PlanICS and OptaPlanner planning engines on the example of the travel planning problem". The application uses the [PlanICS](https://kus.ii.uph.edu.pl/) and [OptaPlanner](https://www.optaplanner.org/) planning engines.
 The application tries to find the best offers that will meet all requirements. It allows you to select and configure algorithms and generate csv files with exact times.
 
